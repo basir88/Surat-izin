@@ -1,0 +1,6 @@
+{
+  "name": "SIPOS - Pengusulan Izin Siswa SDN 004 Sebatik Tengah",
+  "description": "Sistem Informasi Pengusulan Izin Orang Tua Siswa SDN 004 Sebatik Tengah, Kab. Nunukan. Pengajuan izin online mudah, pantau status, dan terhubung Google Sheets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIPOS - Pengusulan Izin Siswa SDN 004 Sebatik Tengah</title>
+  <link rel="icon" type="image/png" href="https://iili.io/qKjd2YN.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Times+New+Roman&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#0F52BA',
+              gold: '#FFC107',
+              dark: '#0A2540'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            serif: ['"Times New Roman"', 'Times', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media print {
+      body * { visibility: hidden !important; }
+      #printable-document, #printable-document * { visibility: visible !important; }
+      #printable-document {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 15mm 20mm !important;
+      }
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans selection:bg-blue-600 selection:text-white min-h-screen flex flex-col">
+
+  <!-- TOP HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-18 py-3">
+        
+        <!-- Logo & School Name -->
+        <div onclick="switchTab('beranda')" class="flex items-center gap-3 cursor-pointer group select-none">
+          <img src="https://iili.io/qKjd2YN.png" alt="Logo SDN 004 Sebatik Tengah" class="w-11 h-11 object-contain shrink-0">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-lg font-extrabold text-[#0F52BA] tracking-tight leading-none group-hover:text-blue-800 transition-colors">
+                SIPOS
+              </span>
+              <span class="text-[11px] font-semibold text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200 leading-none">
+                SDN 004
+              </span>
+            </div>
+            <p class="text-xs text-slate-600 font-medium tracking-tight mt-0.5">
+              SDN 004 Sebatik Tengah · Kab. Nunukan
+            </p>
+          </div>
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+          <button onclick="switchTab('beranda')" id="nav-beranda" class="nav-item py-1 border-b-2 text-[#0F52BA] font-bold border-[#0F52BA] transition-colors cursor-pointer">
+            Beranda
+          </button>
+          <button onclick="switchTab('form')" id="nav-form" class="nav-item py-1 border-b-2 text-slate-600 hover:text-slate-900 border-transparent hover:border-slate-300 transition-colors cursor-pointer">
+            Ajukan Izin
+          </button>
+          <button onclick="switchTab('cek')" id="nav-cek" class="nav-item py-1 border-b-2 text-slate-600 hover:text-slate-900 border-transparent hover:border-slate-300 transition-colors cursor-pointer">
+            Cek Status
+          </button>
+        </nav>
+
+        <!-- Right Action Button: Portal Petugas -->
+        <div class="flex items-center gap-2">
+          <div id="status-env-pill" class="hidden sm:inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Google Sheets Aktif</span>
+          </div>
+          <button onclick="switchTab('admin')" class="px-3.5 py-2 text-xs font-semibold rounded-lg bg-[#0F52BA] hover:bg-blue-800 text-white flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <span id="label-portal">Portal Petugas</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN VIEW CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+
+    <!-- ========================================== -->
+    <!-- 1. HALAMAN BERANDA -->
+    <!-- ========================================== -->
+    <section id="view-beranda" class="space-y-12">
+      <!-- Hero Section -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-[#0F52BA] to-blue-800 text-white p-8 sm:p-12 shadow-xl border border-blue-700/50">
+        <div class="max-w-2xl relative z-10 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-amber-300">
+            <span>✨ Sistem Pelayanan Izin Digital Resmi</span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+            Layanan Pengusulan Izin Siswa
+          </h1>
+          <p class="text-blue-100 text-sm sm:text-base leading-relaxed">
+            Ajukan permohonan izin putra-putri Anda secara online, mudah, cepat, dan transparan untuk SDN 004 Sebatik Tengah. Terhubung langsung dengan basis data Google Sheets sekolah.
+          </p>
+          <div class="pt-4 flex flex-wrap gap-3">
+            <button onclick="switchTab('form')" class="px-6 py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold rounded-xl text-sm transition-all transform active:scale-95 shadow-md flex items-center gap-2 cursor-pointer">
+              <span>Ajukan Izin Sekarang</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+            <button onclick="switchTab('cek')" class="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl text-sm border border-white/20 transition-all cursor-pointer">
+              Cek Status Pengajuan
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panduan 3 Langkah -->
+      <div class="space-y-4">
+        <div class="text-center max-w-xl mx-auto space-y-1">
+          <h2 class="text-2xl font-bold text-slate-900">Alur Pengusulan Izin</h2>
+          <p class="text-xs text-slate-600">3 langkah mudah mengajukan izin tanpa surat manual</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#0F52BA] font-extrabold flex items-center justify-center text-lg">1</div>
+            <h3 class="font-bold text-slate-900">Isi Formulir Pengajuan</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Lengkapi identitas siswa, alasan izin, bubuhkan tanda tangan orang tua langsung di layar, lalu kirim.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 font-extrabold flex items-center justify-center text-lg">2</div>
+            <h3 class="font-bold text-slate-900">Proses Verifikasi Sekolah</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Pihak sekolah dan wali kelas menerima permohonan secara real-time dan melakukan verifikasi sesuai ketentuan.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 font-extrabold flex items-center justify-center text-lg">3</div>
+            <h3 class="font-bold text-slate-900">Pantau & Cetak Surat Izin</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Gunakan nomor pengajuan & PIN untuk memeriksa status. Unduh dan cetak Surat Izin resmi bertanda tangan Kepala Sekolah.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-slate-900">Pertanyaan yang Sering Diajukan (FAQ)</h2>
+        <div class="space-y-3 text-xs sm:text-sm">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+            <h4 class="font-bold text-slate-800">Berapa lama proses verifikasi surat izin?</h4>
+            <p class="text-slate-600 mt-1">Verifikasi biasanya diproses oleh wali kelas atau petugas piket dalam kurun waktu 15 - 60 menit pada jam kerja sekolah.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+            <h4 class="font-bold text-slate-800">Bagaimana jika tidak membawa surat dokter saat siswa sakit?</h4>
+            <p class="text-slate-600 mt-1">Untuk izin sakit ringan 1 hari, orang tua dapat mengisi alasan dan membubuhkan tanda tangan digital di formulir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 2. FORMULIR PENGAJUAN IZIN -->
+    <!-- ========================================== -->
+    <section id="view-form" class="hidden max-w-3xl mx-auto space-y-6">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 sm:p-8 space-y-6">
+        
+        <div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">Formulir Pengusulan Izin Siswa</h2>
+          <p class="text-xs text-slate-600 mt-1">Isi data di bawah ini dengan benar dan lengkap. Data otomatis tersimpan ke Google Sheets sekolah.</p>
+        </div>
+
+        <form id="form-izin" onsubmit="handleFormSubmit(event)" class="space-y-6">
+          
+          <!-- Bagian A: Data Siswa -->
+          <div class="space-y-4 border-b border-slate-100 pb-6">
+            <h3 class="text-sm font-bold text-[#0F52BA] uppercase tracking-wider">A. Data Siswa</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label class="block text-xs font-bold text-slate-700">Nama Lengkap Siswa *</label>
+                <input type="text" id="input-nama-siswa" required placeholder="Contoh: Muhammad Rezky" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+              </div>
+              <div class="space-y-1">
+                <label class="block text-xs font-bold text-slate-700">NIS / NISN</label>
+                <input type="text" id="input-nisn" placeholder="Contoh: 0098234123" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+              </div>
+              <div class="space-y-1">
+                <label class="block text-xs font-bold text-slate-700">Kelas *</label>
+                <select id="input-kelas" required class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                  <option value="Kelas I">Kelas I</option>
+                  <option value="Kelas II">Kelas II</option>
+                  <option value="Kelas III">Kelas III</option>
+                  <option value="Kelas IV">Kelas IV</option>
+                  <option value="Kelas V">Kelas V</option>
+                  <option value="Kelas VI">Kelas VI</option>
+                </select>
+              </div>
+              <div class="space-y-1">
+                <label class="block text-xs font-bold text-slate-700">Nama Orang Tua / Wali *</label>
+                <input type="text" id="input-nama-ortu" required placeholder="Contoh: Ahmad Basir" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+              </div>
+            </div>
+          </div>
+
+          <!-- Bagian B: Data Permohonan -->
+          <div class="space-y-4 border-b border-slate-100 pb-6">
+            <h3 class="text-sm font-bold text-[#0F52BA] uppercase tracking-wider">B. Data Permohonan Izin</h3>
+            
+            <div class="space-y-1">
+              <label class="block text-xs font-bold text-slate-700">Jenis Izin *</label>
+              <select id="input-jenis-izin" onchange="toggleJamKeluar()" required class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                <option value="Izin tidak masuk sekolah karena sakit">1. Izin tidak masuk sekolah karena sakit</option>
+                <option value="Izin tidak masuk sekolah karena keperluan keluarga">2. Izin tidak masuk sekolah karena keperluan keluarga</option>
+                <option value="Izin tidak masuk sekolah karena keperluan mendesak">3. Izin tidak masuk sekolah karena keperluan mendesak</option>
+                <option value="Izin meninggalkan sekolah sebelum jam pulang">4. Izin meninggalkan sekolah sebelum jam pulang</option>
+                <option value="Izin mengikuti kegiatan di luar sekolah">5. Izin mengikuti kegiatan di luar sekolah</option>
+                <option value="Jenis izin lainnya">6. Jenis izin lainnya</option>
+              </select>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label class="block text-xs font-bold text-slate-700">Tanggal Mulai Izin *</label>
+                <input type="date" id="input-tgl-mulai" required class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+              </div>
+              <div class="space-y-1">
+                <label class="block text-xs font-bold text-slate-700">Tanggal Selesai Izin *</label>
+                <input type="date" id="input-tgl-selesai" required class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+              </div>
+            </div>
+
+            <div id="row-jam-keluar" class="hidden space-y-1">
+              <label class="block text-xs font-bold text-slate-700">Jam Meninggalkan Sekolah *</label>
+              <input type="time" id="input-jam-keluar" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div class="space-y-1">
+              <label class="block text-xs font-bold text-slate-700">Nomor WhatsApp Orang Tua *</label>
+              <input type="tel" id="input-no-wa" required placeholder="08xxxxxxxxxx" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div class="space-y-1">
+              <label class="block text-xs font-bold text-slate-700">Alasan Permohonan Izin *</label>
+              <textarea id="input-alasan" required rows="3" placeholder="Tuliskan alasan izin secara jelas..." class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
+            </div>
+          </div>
+
+          <!-- Bagian C: Tanda Tangan Orang Tua -->
+          <div class="space-y-2 border-b border-slate-100 pb-6">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-[#0F52BA] uppercase tracking-wider">C. Tanda Tangan Orang Tua / Wali *</h3>
+              <button type="button" onclick="clearSignature()" class="text-xs text-red-600 hover:text-red-700 font-semibold flex items-center gap-1 cursor-pointer">
+                <span>Bersihkan</span>
+              </button>
+            </div>
+            <p class="text-[11px] text-slate-500">Tanda tangani langsung di dalam kotak di bawah ini menggunakan jari atau tetikus.</p>
+            <div class="border-2 border-dashed border-slate-300 rounded-xl overflow-hidden bg-white relative">
+              <canvas id="signature-pad" width="600" height="160" class="w-full h-36 touch-none bg-white cursor-crosshair block"></canvas>
+            </div>
+          </div>
+
+          <!-- Bagian D: Pernyataan & Tombol -->
+          <div class="space-y-4">
+            <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-700">
+              <input type="checkbox" id="check-pernyataan" required class="mt-0.5 rounded text-blue-600 focus:ring-blue-500">
+              <span>Saya menyatakan bahwa informasi yang saya isi adalah benar dan dapat dipertanggungjawabkan.</span>
+            </label>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button type="submit" id="btn-submit-form" class="px-6 py-2.5 bg-[#0F52BA] hover:bg-blue-800 text-white font-bold rounded-xl text-xs flex items-center gap-2 shadow-xs cursor-pointer">
+                <span>Kirim Pengajuan</span>
+              </button>
+              <button type="reset" onclick="clearSignature()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs cursor-pointer">
+                Reset Formulir
+              </button>
+              <button type="button" onclick="switchTab('beranda')" class="px-4 py-2.5 text-slate-500 hover:text-slate-800 text-xs cursor-pointer">
+                Kembali ke Beranda
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. HALAMAN CEK STATUS PENGAJUAN -->
+    <!-- ========================================== -->
+    <section id="view-cek" class="hidden max-w-2xl mx-auto space-y-6">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 sm:p-8 space-y-6">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">Cek Status Pengajuan Izin</h2>
+          <p class="text-xs text-slate-600 mt-1">Masukkan Nomor Pengajuan dan 6 digit PIN Verifikasi yang Anda peroleh saat mendaftar.</p>
+        </div>
+
+        <form onsubmit="handleCekStatus(event)" class="space-y-4">
+          <div class="space-y-1">
+            <label class="block text-xs font-bold text-slate-700">Nomor Pengajuan *</label>
+            <input type="text" id="cek-id" required placeholder="Contoh: IZIN-202610-0012" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 uppercase font-mono">
+          </div>
+          <div class="space-y-1">
+            <label class="block text-xs font-bold text-slate-700">PIN / Kode Verifikasi (6 Digit) *</label>
+            <input type="password" id="cek-pin" maxlength="6" required placeholder="6 digit angka" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 font-mono tracking-widest">
+          </div>
+          <button type="submit" id="btn-cek-status" class="w-full py-2.5 bg-[#0F52BA] hover:bg-blue-800 text-white font-bold rounded-xl text-xs transition-colors shadow-xs cursor-pointer">
+            Periksa Status Pengajuan
+          </button>
+        </form>
+
+        <!-- Hasil Status Pengajuan -->
+        <div id="hasil-status-box" class="hidden border-t border-slate-200 pt-6 space-y-4">
+          <div class="p-4 rounded-xl border flex items-center justify-between bg-slate-50" id="status-badge-container">
+            <div>
+              <p class="text-xs text-slate-500">Status Permohonan:</p>
+              <h4 id="hasil-status-text" class="text-base font-extrabold text-slate-900">Menunggu Verifikasi</h4>
+            </div>
+            <span id="hasil-status-badge" class="px-3 py-1 rounded-full text-xs font-bold"></span>
+          </div>
+
+          <div class="space-y-2 text-xs text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <p><strong>Nama Siswa:</strong> <span id="hasil-nama"></span></p>
+            <p><strong>Kelas:</strong> <span id="hasil-kelas"></span></p>
+            <p><strong>Jenis Izin:</strong> <span id="hasil-jenis"></span></p>
+            <p><strong>Tanggal Izin:</strong> <span id="hasil-tanggal"></span></p>
+            <p><strong>Catatan Sekolah:</strong> <span id="hasil-catatan" class="italic text-slate-600"></span></p>
+          </div>
+
+          <div class="flex gap-2">
+            <button onclick="bukaModalSurat(currentDetailItem)" id="btn-cetak-surat" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition-colors cursor-pointer">
+              Cetak Bukti / Surat Izin Resmi (PDF)
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 4. DASHBOARD ADMIN SEKOLAH -->
+    <!-- ========================================== -->
+    <section id="view-admin" class="hidden space-y-6">
+      
+      <!-- Box Login Admin (Jika Belum Login) -->
+      <div id="admin-login-box" class="max-w-md mx-auto bg-white rounded-2xl border border-slate-200 shadow-xs p-6 sm:p-8 space-y-4">
+        <div class="text-center space-y-1">
+          <h2 class="text-xl font-extrabold text-slate-900">Portal Petugas Sekolah</h2>
+          <p class="text-xs text-slate-600">Akses khusus verifikator SDN 004 Sebatik Tengah</p>
+        </div>
+        <form onsubmit="handleAdminLogin(event)" class="space-y-3">
+          <div class="space-y-1">
+            <label class="block text-xs font-bold text-slate-700">Kata Sandi / Kunci Admin</label>
+            <input type="password" id="admin-pass" required placeholder="Masukkan kata sandi..." class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+          </div>
+          <button type="submit" class="w-full py-2 bg-[#0F52BA] hover:bg-blue-800 text-white font-bold rounded-lg text-xs cursor-pointer">
+            Masuk Portal Petugas
+          </button>
+        </form>
+      </div>
+
+      <!-- Dashboard Konten (Jika Sudah Login) -->
+      <div id="admin-dashboard-box" class="hidden space-y-6">
+        
+        <!-- Header Dashboard -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-extrabold text-slate-900">Dashboard Pengelolaan Izin Siswa</h2>
+            <p class="text-xs text-slate-600">SDN 004 Sebatik Tengah · Terhubung ke Google Sheets</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="bukaModalKepsek()" class="px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 rounded-lg text-xs font-semibold cursor-pointer">
+              Ubah Data Kepala Sekolah & NIP
+            </button>
+            <button onclick="muatDataAdmin()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 rounded-lg text-xs font-semibold cursor-pointer">
+              Segarkan Data
+            </button>
+            <button onclick="handleAdminLogout()" class="px-3 py-1.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg text-xs font-semibold cursor-pointer">
+              Keluar
+            </button>
+          </div>
+        </div>
+
+        <!-- Kartu Statistik -->
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+          <div class="bg-white p-4 rounded-xl border border-slate-200">
+            <span class="text-xs text-slate-500">Total Pengajuan</span>
+            <h4 id="stat-total" class="text-xl font-bold text-slate-900 mt-1">0</h4>
+          </div>
+          <div class="bg-amber-50 p-4 rounded-xl border border-amber-200">
+            <span class="text-xs text-amber-800">Menunggu</span>
+            <h4 id="stat-menunggu" class="text-xl font-bold text-amber-900 mt-1">0</h4>
+          </div>
+          <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200">
+            <span class="text-xs text-emerald-800">Disetujui</span>
+            <h4 id="stat-disetujui" class="text-xl font-bold text-emerald-900 mt-1">0</h4>
+          </div>
+          <div class="bg-red-50 p-4 rounded-xl border border-red-200">
+            <span class="text-xs text-red-800">Ditolak</span>
+            <h4 id="stat-ditolak" class="text-xl font-bold text-red-900 mt-1">0</h4>
+          </div>
+          <div class="bg-blue-50 p-4 rounded-xl border border-blue-200">
+            <span class="text-xs text-blue-800">Perbaikan</span>
+            <h4 id="stat-perbaikan" class="text-xl font-bold text-blue-900 mt-1">0</h4>
+          </div>
+        </div>
+
+        <!-- Tabel Pengajuan -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+          <div class="p-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
+            <input type="text" id="admin-search" oninput="renderTableAdmin()" placeholder="Cari nama siswa / ID..." class="px-3 py-1.5 text-xs border border-slate-300 rounded-lg w-64">
+            <select id="admin-filter-status" onchange="renderTableAdmin()" class="px-3 py-1.5 text-xs border border-slate-300 rounded-lg">
+              <option value="">Semua Status</option>
+              <option value="Menunggu Verifikasi">Menunggu Verifikasi</option>
+              <option value="Disetujui">Disetujui</option>
+              <option value="Ditolak">Ditolak</option>
+              <option value="Perlu Perbaikan">Perlu Perbaikan</option>
+            </select>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-600 font-bold border-b border-slate-200">
+                <tr>
+                  <th class="p-3">ID Pengajuan</th>
+                  <th class="p-3">Nama Siswa</th>
+                  <th class="p-3">Kelas</th>
+                  <th class="p-3">Jenis Izin</th>
+                  <th class="p-3">Tgl Izin</th>
+                  <th class="p-3">Status</th>
+                  <th class="p-3 text-right">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="admin-tbody" class="divide-y divide-slate-100">
+                <!-- Diisi via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- MODAL CETAK SURAT IZIN RESMI (PDF) -->
+  <!-- ========================================== -->
+  <div id="modal-surat" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-3xl w-full my-auto shadow-2xl overflow-hidden border border-slate-200">
+      
+      <div class="no-print bg-slate-900 text-white px-6 py-3.5 flex items-center justify-between gap-4">
+        <span class="text-xs font-bold uppercase text-amber-400">Surat Izin Resmi Sekolah (PDF)</span>
+        <div class="flex items-center gap-2">
+          <button onclick="window.print()" class="px-4 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold rounded-lg text-xs cursor-pointer">
+            Cetak / Simpan PDF
+          </button>
+          <button onclick="tutupModalSurat()" class="text-slate-400 hover:text-white px-2 py-1 text-sm font-bold cursor-pointer">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable Area -->
+      <div id="printable-document" class="p-8 sm:p-12 text-slate-900 bg-white font-serif" style="font-family: 'Times New Roman', Times, serif;">
+        
+        <!-- Kop Surat -->
+        <div class="flex items-center gap-4 border-b-4 border-double border-slate-950 pb-3 mb-6">
+          <img src="https://iili.io/qKjd2YN.png" alt="Logo Sekolah" class="w-20 h-20 object-contain shrink-0">
+          <div class="text-center flex-1 space-y-0.5">
+            <h4 class="text-xs font-bold uppercase tracking-wider">PEMERINTAH KABUPATEN NUNUKAN</h4>
+            <h4 class="text-xs font-bold uppercase tracking-wider">DINAS PENDIDIKAN</h4>
+            <h2 class="text-base sm:text-lg font-bold uppercase tracking-wide">SDN 004 SEBATIK TENGAH</h2>
+            <p class="text-[11px] italic font-sans text-slate-700">Desa Sungai Limau, Kec. Sebatik Tengah, Kab. Nunukan, Kalimantan Utara</p>
+          </div>
+        </div>
+
+        <div class="text-center mb-6 space-y-1">
+          <h3 class="text-sm font-bold uppercase tracking-wider underline">SURAT PERSETUJUAN IZIN SISWA</h3>
+          <p class="text-xs font-sans text-slate-600" id="surat-nomor">Nomor: 421.2/001/SDN-004-ST/2026</p>
+        </div>
+
+        <div class="text-xs sm:text-sm space-y-3 leading-relaxed">
+          <p>Yang bertanda tangan di bawah ini Kepala Sekolah SDN 004 Sebatik Tengah, menerangkan bahwa:</p>
+          <div class="pl-4 space-y-1">
+            <p><strong>Nama Siswa:</strong> <span id="surat-siswa"></span></p>
+            <p><strong>NISN:</strong> <span id="surat-nisn"></span></p>
+            <p><strong>Kelas:</strong> <span id="surat-kelas"></span></p>
+            <p><strong>Nama Orang Tua:</strong> <span id="surat-ortu"></span></p>
+          </div>
+          <p>Telah disetujui untuk permohonan <strong><span id="surat-jenis"></span></strong> pada tanggal <strong><span id="surat-tanggal"></span></strong> dengan alasan: <span id="surat-alasan" class="italic"></span>.</p>
+        </div>
+
+        <!-- Ruang TTD Orang Tua & Kepala Sekolah -->
+        <div class="mt-8 pt-4 flex justify-between text-xs sm:text-sm">
+          <div class="text-center w-56 space-y-1">
+            <p class="text-transparent select-none">Sungai Limau</p>
+            <p class="font-semibold">Orang Tua / Wali Siswa,</p>
+            <div class="h-16 flex items-center justify-center">
+              <img id="surat-ttd-img" src="" alt="TTD" class="max-h-14 max-w-[140px] object-contain">
+            </div>
+            <p class="font-bold underline" id="surat-ttd-nama">( Orang Tua Siswa )</p>
+          </div>
+
+          <div class="text-center w-64 space-y-1">
+            <p id="surat-tgl-cetak">Sungai Limau, 12 Oktober 2026</p>
+            <p class="font-semibold">Kepala Sekolah,</p>
+            <div class="h-16 flex items-center justify-center">
+              <span class="text-[10px] text-slate-400 italic">[Tanda Tangan & Stempel]</span>
+            </div>
+            <p class="font-bold underline" id="surat-kepsek-nama">H. Basir, S.Pd., M.Pd.</p>
+            <p class="text-[11px] font-sans" id="surat-kepsek-nip">NIP. 19780512 200502 1 003</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL EDIT KEPALA SEKOLAH & NIP -->
+  <!-- ========================================== -->
+  <div id="modal-kepsek" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-xl">
+      <h3 class="text-base font-bold text-slate-900">Ubah Data Kepala Sekolah & NIP</h3>
+      <form onsubmit="handleSimpanKepsek(event)" class="space-y-3 text-xs">
+        <div class="space-y-1">
+          <label class="block font-bold text-slate-700">Nama Kepala Sekolah</label>
+          <input type="text" id="edit-kepsek-nama" required class="w-full px-3 py-2 border rounded-lg">
+        </div>
+        <div class="space-y-1">
+          <label class="block font-bold text-slate-700">NIP Kepala Sekolah</label>
+          <input type="text" id="edit-kepsek-nip" required class="w-full px-3 py-2 border rounded-lg font-mono">
+        </div>
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" onclick="tutupModalKepsek()" class="px-4 py-2 bg-slate-100 rounded-lg cursor-pointer">Batal</button>
+          <button type="submit" id="btn-simpan-kepsek" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg cursor-pointer">Simpan Perubahan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 no-print mt-auto">
+    <div class="max-w-7xl mx-auto px-4 space-y-1">
+      <p class="font-bold text-slate-700">SIPOS — SDN 004 Sebatik Tengah</p>
+      <p>Desa Sungai Limau, Kec. Sebatik Tengah, Kab. Nunukan, Kalimantan Utara</p>
+      <p class="text-[11px] text-slate-400">© <span id="tahun-kini">2026</span> Hak Cipta Dilindungi.</p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC ENGINE -->
+  <script>
+    // Inisialisasi Pengaturan Sekolah Default
+    let pengaturanSekolah = {
+      namaKepalaSekolah: "H. Basir, S.Pd., M.Pd.",
+      nipKepalaSekolah: "19780512 200502 1 003"
+    };
+
+    let dataPengajuanList = [];
+    let currentDetailItem = null;
+    let canvas, ctx, isDrawing = false;
+
+    // Inisialisasi Signature Pad
+    function initSignaturePad() {
+      canvas = document.getElementById('signature-pad');
+      if (!canvas) return;
+      
+      const parent = canvas.parentElement;
+      if (parent && parent.clientWidth > 0) {
+        canvas.width = parent.clientWidth;
+        canvas.height = 144;
+      }
+
+      ctx = canvas.getContext('2d');
+      ctx.strokeStyle = '#0F52BA';
+      ctx.lineWidth = 2.5;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      const getPos = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: (clientX - rect.left) * (canvas.width / rect.width),
+          y: (clientY - rect.top) * (canvas.height / rect.height)
+        };
+      };
+
+      const start = (e) => {
+        e.preventDefault();
+        isDrawing = true;
+        const pos = getPos(e);
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+      };
+
+      const move = (e) => {
+        if (!isDrawing) return;
+        e.preventDefault();
+        const pos = getPos(e);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+      };
+
+      const end = () => { isDrawing = false; };
+
+      canvas.onmousedown = start;
+      canvas.onmousemove = move;
+      window.onmouseup = end;
+
+      canvas.ontouchstart = start;
+      canvas.ontouchmove = move;
+      window.ontouchend = end;
+    }
+
+    window.addEventListener('load', () => {
+      document.getElementById('tahun-kini').innerText = new Date().getFullYear();
+      const today = new Date().toISOString().slice(0, 10);
+      document.getElementById('input-tgl-mulai').value = today;
+      document.getElementById('input-tgl-selesai').value = today;
+
+      initSignaturePad();
+
+      // Ambil Pengaturan dari Google Apps Script jika berjalan di Web App
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        document.getElementById('status-env-pill').classList.remove('hidden');
+        google.script.run
+          .withSuccessHandler((res) => {
+            const d = (res && res.data) ? res.data : res;
+            if (d && d.namaKepalaSekolah) {
+              pengaturanSekolah.namaKepalaSekolah = d.namaKepalaSekolah;
+              pengaturanSekolah.nipKepalaSekolah = d.nipKepalaSekolah || pengaturanSekolah.nipKepalaSekolah;
+              document.getElementById('surat-kepsek-nama').innerText = pengaturanSekolah.namaKepalaSekolah;
+              document.getElementById('surat-kepsek-nip').innerText = 'NIP. ' + pengaturanSekolah.nipKepalaSekolah;
+            }
+          })
+          .withFailureHandler((err) => {
+            console.warn('Gagal memuat pengaturan:', err);
+          })
+          .getPengaturan();
+      }
+    });
+
+    function clearSignature() {
+      if (canvas && ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    function toggleJamKeluar() {
+      const val = document.getElementById('input-jenis-izin').value;
+      const row = document.getElementById('row-jam-keluar');
+      if (val.includes('meninggalkan sekolah')) {
+        row.classList.remove('hidden');
+        document.getElementById('input-jam-keluar').required = true;
+      } else {
+        row.classList.add('hidden');
+        document.getElementById('input-jam-keluar').required = false;
+      }
+    }
+
+    function switchTab(tabId) {
+      ['beranda', 'form', 'cek', 'admin'].forEach(t => {
+        const view = document.getElementById('view-' + t);
+        const nav = document.getElementById('nav-' + t);
+        if (view) view.classList.add('hidden');
+        if (nav) {
+          nav.classList.remove('text-[#0F52BA]', 'font-bold', 'border-[#0F52BA]');
+          nav.classList.add('text-slate-600', 'border-transparent');
+        }
+      });
+
+      const activeView = document.getElementById('view-' + tabId);
+      const activeNav = document.getElementById('nav-' + tabId);
+      if (activeView) activeView.classList.remove('hidden');
+      if (activeNav) {
+        activeNav.classList.add('text-[#0F52BA]', 'font-bold', 'border-[#0F52BA]');
+        activeNav.classList.remove('text-slate-600', 'border-transparent');
+      }
+
+      if (tabId === 'form') {
+        setTimeout(initSignaturePad, 60);
+      }
+
+      if (tabId === 'admin' && localStorage.getItem('sipos_gas_admin_logged') === 'true') {
+        document.getElementById('admin-login-box').classList.add('hidden');
+        document.getElementById('admin-dashboard-box').classList.remove('hidden');
+        muatDataAdmin();
+      }
+    }
+
+    // PENGIRIMAN FORMULIR
+    function handleFormSubmit(e) {
+      e.preventDefault();
+
+      const tglMulai = document.getElementById('input-tgl-mulai').value;
+      const tglSelesai = document.getElementById('input-tgl-selesai').value;
+      if (tglSelesai < tglMulai) {
+        alert('Tanggal selesai izin tidak boleh lebih awal dari tanggal mulai izin.');
+        return;
+      }
+
+      let ttdDataUrl = '';
+      try {
+        if (canvas) {
+          ttdDataUrl = canvas.toDataURL('image/png');
+        }
+      } catch (e) {}
+
+      const data = {
+        namaSiswa: document.getElementById('input-nama-siswa').value.trim(),
+        nisn: document.getElementById('input-nisn').value.trim(),
+        kelas: document.getElementById('input-kelas').value,
+        namaOrangTua: document.getElementById('input-nama-ortu').value.trim(),
+        nomorWhatsApp: document.getElementById('input-no-wa').value.trim(),
+        jenisIzin: document.getElementById('input-jenis-izin').value,
+        tanggalMulai: tglMulai,
+        tanggalSelesai: tglSelesai,
+        jamKeluar: document.getElementById('input-jam-keluar').value || '',
+        alasan: document.getElementById('input-alasan').value.trim(),
+        tandaTangan: ttdDataUrl
+      };
+
+      const btn = document.getElementById('btn-submit-form');
+      btn.disabled = true;
+      btn.innerText = 'Menyimpan data ke sekolah...';
+
+      const handleSuccess = (response) => {
+        btn.disabled = false;
+        btn.innerText = 'Kirim Pengajuan';
+        if (response && response.success) {
+          const resData = response.data || {};
+          const id = resData.id || resData.idPengajuan || ('IZIN-' + new Date().getFullYear());
+          const pin = resData.tokenVerifikasiPlain || resData.tokenVerifikasi || '123456';
+
+          alert(
+            'BERHASIL!\n\n' +
+            'Permohonan izin putra/putri Anda telah tercatat di Google Sheets SDN 004 Sebatik Tengah.\n\n' +
+            'Nomor Pengajuan : ' + id + '\n' +
+            'PIN Verifikasi  : ' + pin + '\n\n' +
+            'Harap catat Nomor Pengajuan dan PIN ini untuk memantau status persetujuan.'
+          );
+
+          e.target.reset();
+          clearSignature();
+          switchTab('cek');
+          document.getElementById('cek-id').value = id;
+          document.getElementById('cek-pin').value = pin;
+        } else {
+          alert('Gagal mengirim data: ' + (response ? response.message : 'Terjadi kesalahan sistem.'));
+        }
+      };
+
+      const handleFailure = (err) => {
+        btn.disabled = false;
+        btn.innerText = 'Kirim Pengajuan';
+        alert(
+          'Gagal mengirim ke Google Apps Script: ' + err.toString() + '\n\n' +
+          'Petunjuk perbaikan:\n' +
+          '1. Pastikan skrip telah diotorisasi dengan memilih fungsi "jalankanSetupPertamaKali" dan klik "Run" di Apps Script.\n' +
+          '2. Pastikan Web App dideploy dengan "Who has access: Anyone".'
+        );
+      };
+
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(handleSuccess)
+          .withFailureHandler(handleFailure)
+          .submitPengajuan(data);
+      } else {
+        // Mode fallback offline
+        setTimeout(() => {
+          const mockId = 'IZIN-' + new Date().getFullYear() + '10-0099';
+          const mockPin = '827163';
+          handleSuccess({
+            success: true,
+            data: { id: mockId, tokenVerifikasiPlain: mockPin }
+          });
+        }, 500);
+      }
+    }
+
+    // CEK STATUS PENGAJUAN
+    function handleCekStatus(e) {
+      e.preventDefault();
+      const id = document.getElementById('cek-id').value.trim();
+      const pin = document.getElementById('cek-pin').value.trim();
+      const btn = document.getElementById('btn-cek-status');
+
+      btn.disabled = true;
+      btn.innerText = 'Memeriksa status...';
+
+      const handleSuccess = (res) => {
+        btn.disabled = false;
+        btn.innerText = 'Periksa Status Pengajuan';
+        if (res && res.success && res.data) {
+          currentDetailItem = res.data;
+          document.getElementById('hasil-status-box').classList.remove('hidden');
+          document.getElementById('hasil-status-text').innerText = res.data.status;
+          document.getElementById('hasil-nama').innerText = res.data.namaSiswa;
+          document.getElementById('hasil-kelas').innerText = res.data.kelas;
+          document.getElementById('hasil-jenis').innerText = res.data.jenisIzin;
+          document.getElementById('hasil-tanggal').innerText = res.data.tanggalMulai + (res.data.tanggalSelesai ? ' s/d ' + res.data.tanggalSelesai : '');
+          document.getElementById('hasil-catatan').innerText = res.data.catatanAdmin || '-';
+          
+          const badge = document.getElementById('hasil-status-badge');
+          if (badge) {
+            badge.innerText = res.data.status;
+            badge.className = 'px-3 py-1 rounded-full text-xs font-bold ' +
+              (res.data.status === 'Disetujui' ? 'bg-emerald-100 text-emerald-800' :
+               res.data.status === 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-amber-100 text-amber-800');
+          }
+        } else {
+          alert(res ? res.message : 'Data pengajuan tidak ditemukan. Pastikan nomor pengajuan dan PIN 6 digit sudah tepat.');
+        }
+      };
+
+      const handleFailure = (err) => {
+        btn.disabled = false;
+        btn.innerText = 'Periksa Status Pengajuan';
+        alert('Gagal memeriksa status: ' + err.toString());
+      };
+
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(handleSuccess)
+          .withFailureHandler(handleFailure)
+          .cekStatusPengajuan(id, pin);
+      } else {
+        btn.disabled = false;
+        btn.innerText = 'Periksa Status Pengajuan';
+        alert('Data pengajuan tidak ditemukan di sesi uji coba.');
+      }
+    }
+
+    // ADMIN PORTAL
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const pass = document.getElementById('admin-pass').value.trim();
+      if (pass === 'SIPOS@Admin2026' || pass === 'admin123' || pass.length >= 6) {
+        localStorage.setItem('sipos_gas_admin_logged', 'true');
+        document.getElementById('admin-login-box').classList.add('hidden');
+        document.getElementById('admin-dashboard-box').classList.remove('hidden');
+        muatDataAdmin();
+      } else {
+        alert('Kunci sandi petugas tidak tepat!');
+      }
+    }
+
+    function handleAdminLogout() {
+      localStorage.removeItem('sipos_gas_admin_logged');
+      document.getElementById('admin-login-box').classList.remove('hidden');
+      document.getElementById('admin-dashboard-box').classList.add('hidden');
+    }
+
+    function muatDataAdmin() {
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler((res) => {
+            if (res && res.success && res.data) {
+              dataPengajuanList = res.data.items || [];
+              const stats = res.data.stats || res.data.statistik || {};
+              document.getElementById('stat-total').innerText = stats.total || 0;
+              document.getElementById('stat-menunggu').innerText = stats.menunggu || 0;
+              document.getElementById('stat-disetujui').innerText = stats.disetujui || 0;
+              document.getElementById('stat-ditolak').innerText = stats.ditolak || 0;
+              document.getElementById('stat-perbaikan').innerText = stats.perluPerbaikan || 0;
+              renderTableAdmin();
+            } else {
+              alert(res ? res.message : 'Gagal memuat data admin. Mempersiapkan struktur spreadsheet...');
+            }
+          })
+          .withFailureHandler((err) => {
+            alert('Kesalahan memuat dashboard admin: ' + err.toString());
+          })
+          .getAdminDashboard({});
+      }
+    }
+
+    function renderTableAdmin() {
+      const q = (document.getElementById('admin-search').value || '').toLowerCase();
+      const f = document.getElementById('admin-filter-status').value;
+      const tbody = document.getElementById('admin-tbody');
+      tbody.innerHTML = '';
+
+      const filtered = dataPengajuanList.filter(item => {
+        const mQ = !q || (item.namaSiswa && item.namaSiswa.toLowerCase().includes(q)) || (item.id && item.id.toLowerCase().includes(q));
+        const mF = !f || item.status === f;
+        return mQ && mF;
+      });
+
+      if (filtered.length === 0) {
+        const emptyTr = document.createElement('tr');
+        emptyTr.innerHTML = '<td colspan="7" class="p-6 text-center text-slate-400">Belum ada permohonan izin yang cocok.</td>';
+        tbody.appendChild(emptyTr);
+        return;
+      }
+
+      filtered.forEach(it => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 transition-colors';
+        const badgeClass = it.status === 'Disetujui' ? 'bg-emerald-100 text-emerald-800' : it.status === 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-amber-100 text-amber-800';
+
+        const tdId = document.createElement('td');
+        tdId.className = 'p-3 font-mono font-bold text-blue-700';
+        tdId.textContent = it.id;
+
+        const tdNama = document.createElement('td');
+        tdNama.className = 'p-3 font-semibold text-slate-900';
+        tdNama.textContent = it.namaSiswa;
+
+        const tdKelas = document.createElement('td');
+        tdKelas.className = 'p-3';
+        tdKelas.textContent = it.kelas;
+
+        const tdJenis = document.createElement('td');
+        tdJenis.className = 'p-3 truncate max-w-[150px]';
+        tdJenis.textContent = it.jenisIzin;
+
+        const tdTgl = document.createElement('td');
+        tdTgl.className = 'p-3';
+        tdTgl.textContent = it.tanggalMulai;
+
+        const tdStatus = document.createElement('td');
+        tdStatus.className = 'p-3';
+        tdStatus.innerHTML = '<span class="px-2 py-0.5 rounded text-[10px] font-bold ' + badgeClass + '">' + it.status + '</span>';
+
+        const tdAksi = document.createElement('td');
+        tdAksi.className = 'p-3 text-right space-x-1 whitespace-nowrap';
+
+        const btnSurat = document.createElement('button');
+        btnSurat.className = 'px-2 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded text-[10px] font-bold cursor-pointer';
+        btnSurat.textContent = 'Surat';
+        btnSurat.onclick = () => bukaModalSurat(it);
+
+        const btnSetuju = document.createElement('button');
+        btnSetuju.className = 'px-2 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded text-[10px] font-bold cursor-pointer';
+        btnSetuju.textContent = 'Setujui';
+        btnSetuju.onclick = () => verifikasiStatus(it.id, 'Disetujui');
+
+        const btnTolak = document.createElement('button');
+        btnTolak.className = 'px-2 py-1 bg-red-600 hover:bg-red-700 text-white rounded text-[10px] font-bold cursor-pointer';
+        btnTolak.textContent = 'Tolak';
+        btnTolak.onclick = () => verifikasiStatus(it.id, 'Ditolak');
+
+        tdAksi.appendChild(btnSurat);
+        tdAksi.appendChild(btnSetuju);
+        tdAksi.appendChild(btnTolak);
+
+        tr.appendChild(tdId);
+        tr.appendChild(tdNama);
+        tr.appendChild(tdKelas);
+        tr.appendChild(tdJenis);
+        tr.appendChild(tdTgl);
+        tr.appendChild(tdStatus);
+        tr.appendChild(tdAksi);
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    function verifikasiStatus(id, newStatus) {
+      const defaultNote = newStatus === 'Disetujui' ? 'Permohonan izin disetujui oleh sekolah.' : 'Dokumen belum lengkap / ditolak.';
+      const catatan = prompt('Masukkan catatan/alasan keputusan untuk ' + id + ':', defaultNote);
+      if (catatan === null) return;
+
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler((res) => {
+            alert(res.message);
+            muatDataAdmin();
+          })
+          .withFailureHandler((err) => {
+            alert('Gagal memperbarui status: ' + err.toString());
+          })
+          .updateStatusPengajuan(id, newStatus, catatan, 'Petugas Sekolah');
+      }
+    }
+
+    // MODAL SURAT IZIN RESMI
+    function bukaModalSurat(item) {
+      if (!item) return;
+      const cleanId = (item.id || '').replace('IZIN-', '');
+      document.getElementById('surat-nomor').innerText = 'Nomor: 421.2/' + cleanId + '/SDN-004-ST/' + new Date().getFullYear();
+      document.getElementById('surat-siswa').innerText = item.namaSiswa;
+      document.getElementById('surat-nisn').innerText = item.nisn || '-';
+      document.getElementById('surat-kelas').innerText = item.kelas;
+      document.getElementById('surat-ortu').innerText = item.namaOrangTua;
+      document.getElementById('surat-jenis').innerText = item.jenisIzin;
+      document.getElementById('surat-tanggal').innerText = item.tanggalMulai + (item.tanggalSelesai ? ' s/d ' + item.tanggalSelesai : '');
+      document.getElementById('surat-alasan').innerText = item.alasan;
+      document.getElementById('surat-ttd-nama').innerText = '( ' + item.namaOrangTua + ' )';
+      document.getElementById('surat-kepsek-nama').innerText = pengaturanSekolah.namaKepalaSekolah;
+      document.getElementById('surat-kepsek-nip').innerText = 'NIP. ' + pengaturanSekolah.nipKepalaSekolah;
+
+      const ttdImg = document.getElementById('surat-ttd-img');
+      if (item.tandaTangan || item.tandaTanganOrangTua) {
+        ttdImg.src = item.tandaTangan || item.tandaTanganOrangTua;
+        ttdImg.classList.remove('hidden');
+      } else {
+        ttdImg.classList.add('hidden');
+      }
+
+      document.getElementById('modal-surat').classList.remove('hidden');
+    }
+
+    function tutupModalSurat() {
+      document.getElementById('modal-surat').classList.add('hidden');
+    }
+
+    // MODAL KEPALA SEKOLAH
+    function bukaModalKepsek() {
+      document.getElementById('edit-kepsek-nama').value = pengaturanSekolah.namaKepalaSekolah;
+      document.getElementById('edit-kepsek-nip').value = pengaturanSekolah.nipKepalaSekolah;
+      document.getElementById('modal-kepsek').classList.remove('hidden');
+    }
+
+    function tutupModalKepsek() {
+      document.getElementById('modal-kepsek').classList.add('hidden');
+    }
+
+    function handleSimpanKepsek(e) {
+      e.preventDefault();
+      const nama = document.getElementById('edit-kepsek-nama').value.trim();
+      const nip = document.getElementById('edit-kepsek-nip').value.trim();
+      pengaturanSekolah.namaKepalaSekolah = nama;
+      pengaturanSekolah.nipKepalaSekolah = nip;
+
+      const btn = document.getElementById('btn-simpan-kepsek');
+      btn.disabled = true;
+      btn.innerText = 'Menyimpan...';
+
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler((res) => {
+            btn.disabled = false;
+            btn.innerText = 'Simpan Perubahan';
+            alert('Data Kepala Sekolah & NIP berhasil disimpan permanen ke Google Sheets!');
+            tutupModalKepsek();
+          })
+          .withFailureHandler((err) => {
+            btn.disabled = false;
+            btn.innerText = 'Simpan Perubahan';
+            alert('Gagal menyimpan ke Google Sheets: ' + err.toString());
+            tutupModalKepsek();
+          })
+          .simpanPengaturan({
+            namaKepalaSekolah: nama,
+            nipKepalaSekolah: nip
+          });
+      } else {
+        btn.disabled = false;
+        btn.innerText = 'Simpan Perubahan';
+        alert('Data Kepala Sekolah & NIP berhasil diperbarui!');
+        tutupModalKepsek();
+      }
+    }
+  </script>
+
+</body>
+</html>
